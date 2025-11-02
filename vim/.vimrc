@@ -27,21 +27,14 @@ nnoremap <leader>s :sfind *
 nnoremap <leader>S :sfind <C-R>=expand('%:p:h').'/**/*'<CR>
 
 call plug#begin()
-Plug 'vim-ruby/vim-ruby'
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries'}
+Plug 'pangloss/vim-javascript'
+Plug 'maxmellon/vim-jsx-pretty'
+Plug 'editorconfig/editorconfig-vim'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 call plug#end()
 
 autocmd InsertEnter,InsertLeave * set cul!
 
-" Set indentation rules for JS, TS, TSX
-autocmd FileType javascript,typescript,typescriptreact setlocal tabstop=2 shiftwidth=2 softtabstop=2 expandtab autoindent smartindent
-
-" Use Prettier for formatting
-autocmd FileType javascript,typescript,typescriptreact setlocal formatprg=prettier\ --stdin-filepath\ %\ --parser\ babel-ts
-
-" Need to set this up for OSX, see 
-" https://stackoverflow.com/questions/69145357/vim-almost-hangs-with-100-line-typescript-file
-set regexpengine=0
-filetype plugin indent on
+syntax off
